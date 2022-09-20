@@ -38,7 +38,7 @@ export default function SearchPage() {
 
     return (
         <div className='container bg-dark text-white'>
-            <div className='row'>
+            <div className='row py-4'>
                 <div className="col-3">
                     <h4>Searching</h4>
                     <hr />

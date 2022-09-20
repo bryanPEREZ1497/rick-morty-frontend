@@ -9,7 +9,10 @@ export const Navbar = () => {
                     className="navbar-brand"
                     to="/"
                 >
-                    Rick and Morty
+                    <img
+                        className='img-fluid rounded-pill'
+                        src={'https://www.pngitem.com/pimgs/m/43-438083_rick-et-morty-rick-fan-art-rick-icon.png'}
+                        alt="RM" width="50" height="auto"></img>
                 </Link>
                 <div className="navbar-collapse d-flex justify-content-end">
                     <div className="navbar-nav">

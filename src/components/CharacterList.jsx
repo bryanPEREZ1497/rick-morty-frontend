@@ -37,10 +37,13 @@ export default function CharacterList() {
   const [page, setPage] = useState(1);
   const navigate = useNavigate();
   const location = useLocation();
-  const { p = ' 1' } = queryString.parse(location.search);
+  const { p = '1' } = queryString.parse(location.search);
 
   useEffect(() => {
-    // console.log('useEffect');
+    if (page === 1) {
+      navigate(`?p=${page}`);
+      fetchData(1)
+    }
     if (page > 1) {
       navigate(`?p=${page}`);
       fetchData(page);
