@@ -1,6 +1,10 @@
 
 import React, { useEffect, useState } from 'react'
 import Character from "./Character";
+import queryString from 'query-string'
+import { useLocation, useNavigate } from 'react-router-dom';
+
+
 
 function Paginator({ page, setPage }) {
   return (
@@ -31,19 +35,27 @@ export default function CharacterList() {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { p = page } = queryString.parse(location.search);
 
   useEffect(() => {
-    async function fetchData() {
-      let response = await fetch('https://rickandmortyapi.com/api/character/?page=' + page);
-      response = await response.json();
-      setLoading(false);
-      setCharacters(response.results);
-    }
-    fetchData();
+    navigate(`?p=${page}`);
+    fetchData(page);
   }, [page]);
+
+  async function fetchData(query) {
+    console.log('query samitg',query)
+    let response = await fetch('https://rickandmortyapi.com/api/character/?page=' + query);
+    response = await response.json();
+    setLoading(false);
+    setCharacters(response.results);
+  }
 
   return (
     <div className='container'>
+      <h1 className='text-center py-4 display-1'>Rick and Morty</h1>
+
       <Paginator page={page} setPage={setPage} />
       {
         loading
