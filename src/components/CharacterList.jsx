@@ -37,15 +37,24 @@ export default function CharacterList() {
   const [page, setPage] = useState(1);
   const navigate = useNavigate();
   const location = useLocation();
-  const { p = page } = queryString.parse(location.search);
+  const { p = ' 1' } = queryString.parse(location.search);
 
   useEffect(() => {
-    navigate(`?p=${page}`);
-    fetchData(page);
+    // console.log('useEffect');
+    if (page > 1) {
+      navigate(`?p=${page}`);
+      fetchData(page);
+    }
   }, [page]);
 
+  useEffect(
+    () => {
+      setPage(Number(p));
+      fetchData(Number(p));
+    }, []
+  )
+
   async function fetchData(query) {
-    console.log('query samitg',query)
     let response = await fetch('https://rickandmortyapi.com/api/character/?page=' + query);
     response = await response.json();
     setLoading(false);
@@ -55,7 +64,6 @@ export default function CharacterList() {
   return (
     <div className='container'>
       <h1 className='text-center py-4 display-1'>Rick and Morty</h1>
-
       <Paginator page={page} setPage={setPage} />
       {
         loading
@@ -72,7 +80,6 @@ export default function CharacterList() {
           </div>
       }
       <Paginator page={page} setPage={setPage} />
-
     </div>
   )
 }

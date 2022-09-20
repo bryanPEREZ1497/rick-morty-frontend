@@ -37,25 +37,11 @@ export default function SearchPage() {
     }
 
     return (
-        <div className='container bg-dark text-white' style={{
-            width: '100%',
-            height: '100%',
-        }}>
-            {/* <h1 className='text-center py-4 display-1'>Search Character</h1> */}
+        <div className='container bg-dark text-white'>
             <div className='row'>
                 <div className="col-3">
                     <h4>Searching</h4>
                     <hr />
-                    {/* <input type="text"
-                        className='form-control'
-                        value={name}
-                        onChange={
-                            (e) => {
-                                setName(e.target.value);
-                            }
-                        } /> 
-                    <button className='btn btn-primary btn-sm'
-                        onClick={handleClick}>Search</button> */}
                     <div class="input-group mb-3">
                         <input
                             type="text"
@@ -73,7 +59,7 @@ export default function SearchPage() {
                             type="button"
                             className='btn btn-primary btn-sm'
                             onClick={handleClick}>
-                            <span class="material-symbols-outlined">
+                            <span className="material-symbols-outlined">
                                 search
                             </span>
                         </button>

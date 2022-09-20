@@ -11,7 +11,7 @@ export const Navbar = () => {
                 >
                     Rick and Morty
                 </Link>
-                <div className="navbar-collapse">
+                <div className="navbar-collapse d-flex justify-content-end">
                     <div className="navbar-nav">
 
                         <NavLink
