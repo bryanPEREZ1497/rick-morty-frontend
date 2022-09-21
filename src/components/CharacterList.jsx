@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Character from "./Character";
 import queryString from 'query-string'
 import { useLocation, useNavigate } from 'react-router-dom';
-
+import Button from '@mui/material/Button';
 
 
 function Paginator({ page, setPage }) {

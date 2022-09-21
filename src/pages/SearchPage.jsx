@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import queryString from 'query-string'
 import SearchResults from '../components/SearchResults';
 import { useEffect } from 'react';
+import Alert from '@mui/material/Alert';
 
 export default function SearchPage() {
     const navigate = useNavigate();
@@ -23,18 +24,23 @@ export default function SearchPage() {
             navigate(`?q=${name}`);
             fetchData(name);
         }
-        else {
-            alert('Please enter a name')
-        }
     }
 
     async function fetchData(query) {
         if (query.length > 0) {
             let response = await fetch(`https://rickandmortyapi.com/api/character/?name=${query}`);
             response = await response.json();
-            setCharacters(response.results);
+            if (response.error) {
+                setCharacters([]);
+            } else {
+                setCharacters(response.results);
+            }
         }
     }
+
+    // const showSearch = (name.length === 0);
+    const showSearch = name.length === 0;
+    const showError = (q.length > 0) && characters.length === 0;
 
     return (
         <div className='container bg-dark text-white'>
@@ -42,7 +48,7 @@ export default function SearchPage() {
                 <div className="col-3">
                     <h4>Searching</h4>
                     <hr />
-                    <div class="input-group mb-3">
+                    <div className="input-group mb-3">
                         <input
                             type="text"
                             aria-describedby="button-addon2"
@@ -68,6 +74,14 @@ export default function SearchPage() {
                 <div className='col-9'>
                     <h4 >Results</h4>
                     <hr />
+                    <div
+                        style={{ display: showError ? '' : 'none' }}>
+                        <Alert severity="error">No character with <b>{q}</b></Alert>
+                    </div>
+                    <div
+                        style={{ display: showSearch ? '' : 'none' }}>
+                        <Alert severity="info">Enter a name</Alert>
+                    </div>
                     <SearchResults characters={characters} />
                 </div>
             </div>
