@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import '../App.css'
 
 
 export default function characterPage() {
@@ -26,7 +27,7 @@ export default function characterPage() {
     }
 
     return (
-        <div className='container bg-dark text-white' style={{
+        <div className='container bg-dark text-white fadein' style={{
         }}>
 
             <div className="row mt-5">
@@ -50,7 +51,7 @@ export default function characterPage() {
                         className="btn btn-outline-primary mt-3"
                         onClick={onNavigateBack}
                     >
-                        Regresar
+                        Back
                     </button>
                 </div>
             </div>

@@ -66,7 +66,7 @@ export default function CharacterList() {
 
   return (
     <div className='container'>
-      <h1 className='text-center py-4 display-1'>Rick and Morty</h1>
+      <h1 className='text-center py-4 display-1 slidein'>Rick and Morty</h1>
       <Paginator page={page} setPage={setPage} />
       {
         loading

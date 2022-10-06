@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Character from "./Character";
 
 export default function SearchResults({ characters }) {
