@@ -31,3 +31,26 @@
     width: 100%;
   }
 }
+
+.borderradius {
+  border-radius: 15%;
+}
+
+.title {
+  cursor: pointer;
+  position: relative;
+}
+
+.title:hover:before {
+  content: 'Click name to copy';
+  position: absolute;
+  color: rgb(148 148 213);
+  background-color: white;
+  padding: 2px;
+  font-size: 12px;
+  border-radius: 5px;
+  border: 1px solid white;
+  top: -20px;
+  right: 0px;
+
+}
