@@ -38,6 +38,11 @@ export default function SearchPage() {
         }
     }
 
+    const submitHandler = (e) => {
+        e.preventDefault();
+        // handleClick();
+    }
+
     // const showSearch = (name.length === 0);
     const showSearch = name.length === 0;
     const showError = (q.length > 0) && characters.length === 0;
@@ -48,28 +53,30 @@ export default function SearchPage() {
                 <div className="col-3">
                     <h4>Searching</h4>
                     <hr />
-                    <div className="input-group mb-3">
-                        <input
-                            type="text"
-                            aria-describedby="button-addon2"
-                            className='form-control'
-                            value={name}
-                            onChange={
-                                (e) => {
-                                    setName(e.target.value);
-                                }
-                            } />
+                    <form onSubmit={submitHandler}>
+                        <div className="input-group mb-3">
+                            <input
+                                type="text"
+                                aria-describedby="button-addon2"
+                                className='form-control'
+                                value={name}
+                                onChange={
+                                    (e) => {
+                                        setName(e.target.value);
+                                    }
+                                } />
 
-                        <button
-                            id="button-addon2"
-                            type="button"
-                            className='btn btn-primary btn-sm'
-                            onClick={handleClick}>
-                            <span className="material-symbols-outlined">
-                                search
-                            </span>
-                        </button>
-                    </div>
+                            <button
+                                id="button-addon2"
+                                // type="button"
+                                className='btn btn-primary btn-sm'
+                                onClick={handleClick}>
+                                <span className="material-symbols-outlined">
+                                    search
+                                </span>
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 <div className='col-9'>
                     <h4 >Results</h4>
@@ -85,6 +92,6 @@ export default function SearchPage() {
                     <SearchResults characters={characters} />
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

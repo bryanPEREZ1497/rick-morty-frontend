@@ -75,7 +75,7 @@ export default function CharacterList() {
           <div className='row'>
             {characters.map(character => {
               return (
-                <div className='col-4' key={character.id}>
+                <div className='col-4 ' key={character.id}>
                   <Character character={character} />
                 </div>
               )
