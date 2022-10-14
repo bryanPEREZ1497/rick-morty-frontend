@@ -35,7 +35,6 @@ function Paginator({ page, setPage }) {
 
 function BasicPagination({ count, page, setPage }) {
   function handlePageChange(e, p) {
-    console.log(p);
     setPage(p);
   }
 
@@ -45,7 +44,8 @@ function BasicPagination({ count, page, setPage }) {
       color="primary"
       onChange={handlePageChange}
       page={page}
-      showFirstButton showLastButton />
+      showFirstButton showLastButton
+      size="small" />
   );
 }
 
@@ -85,7 +85,7 @@ export default function CharacterList() {
   return (
     <div className='container'>
       <div className='d-flex justify-content-center my-4'>
-        <BasicPagination style={{ marginX: 'auto' }} count={42} page={page} setPage={setPage} />
+        <BasicPagination count={42} page={page} setPage={setPage} />
       </div>
       {
         loading
@@ -102,7 +102,7 @@ export default function CharacterList() {
           </div>
       }
       <div className='d-flex justify-content-center my-4'>
-        <BasicPagination style={{ marginX: 'auto' }} count={42} page={page} setPage={setPage} />
+        <BasicPagination count={42} page={page} setPage={setPage} />
       </div>
     </div>
   )
