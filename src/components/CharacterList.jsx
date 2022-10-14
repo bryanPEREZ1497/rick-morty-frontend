@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
+import Pagination from '@mui/material/Pagination';
+
 function Paginator({ page, setPage }) {
   return (
     <div
@@ -34,6 +36,12 @@ function Paginator({ page, setPage }) {
       </button>
     </div>
   )
+}
+
+function BasicPagination({ count, onChange, page, setPage }) {
+  return (
+    <Pagination count={count} color="primary" onChange={onChange} />
+  );
 }
 
 export default function CharacterList() {
@@ -65,14 +73,21 @@ export default function CharacterList() {
   async function fetchData(query) {
     let response = await fetch('https://rickandmortyapi.com/api/character/?page=' + query);
     response = await response.json();
+    // console.log('aca', response);
     setLoading(false);
     setCharacters(response.results);
+  }
+
+  function handlePageChange(e, p) {
+    console.log(p);
+    setPage(p);
   }
 
   return (
     <div className='container'>
       {/* <h1 className='text-center py-4 display-1 slidein'>Rick and Morty App</h1> */}
       <Paginator page={page} setPage={setPage} style={{ padding: 5 }} />
+      {/* <BasicPagination count={42} onChange={handlePageChange}/> */}
       {
         loading
           ? <h1>Loading ...</h1>

@@ -20,7 +20,7 @@ const status = {
 
 export default function Character({ character }) {
     return (
-        <Card className='fadein hover' sx={{ maxWidth: 345, margin: 4 }} >
+        <Card className='fadein hover' sx={{ maxWidth: 345, marginBottom: 4 }} >
             <Link to={`/character/${character.id}`} style={{ textDecoration: 'none' }}>
                 <CardActionArea >
                     <CardMedia

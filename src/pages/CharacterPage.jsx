@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import CircleIcon from '@mui/icons-material/Circle';
 
 import '../App.css'
 
@@ -9,11 +8,16 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import ImageIcon from '@mui/icons-material/Image';
-import WorkIcon from '@mui/icons-material/Work';
+
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import CircleIcon from '@mui/icons-material/Circle';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import HomeIcon from '@mui/icons-material/Home';
+import AirlineSeatIndividualSuiteIcon from '@mui/icons-material/AirlineSeatIndividualSuite';
+import BorderAllIcon from '@mui/icons-material/BorderAll';
+import PlaceIcon from '@mui/icons-material/Place';
+import TvIcon from '@mui/icons-material/Tv';
+
 const status = {
     Alive: 'green',
     Dead: 'red',
@@ -48,9 +52,8 @@ export default function characterPage() {
     }
 
     return (
-        <div className='container fadein' style={{
-            color: 'white',
-        }}>
+        <div className='container fadein'
+            >
 
             <div className="row mt-5">
                 <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12">
@@ -85,7 +88,7 @@ export default function characterPage() {
                                 <ListItem>
                                     <ListItemAvatar>
                                         <Avatar>
-                                            <ImageIcon />
+                                            <AccountCircleIcon />
                                         </Avatar>
                                     </ListItemAvatar>
                                     <ListItemText primary={character.gender} secondary="Gender" />
@@ -96,7 +99,7 @@ export default function characterPage() {
                                 <ListItem>
                                     <ListItemAvatar>
                                         <Avatar>
-                                            <WorkIcon />
+                                            <BorderAllIcon />
                                         </Avatar>
                                     </ListItemAvatar>
                                     <ListItemText primary={character.species} secondary="Species" />
@@ -110,7 +113,7 @@ export default function characterPage() {
                                 <ListItem>
                                     <ListItemAvatar>
                                         <Avatar>
-                                            <BeachAccessIcon />
+                                            <AirlineSeatIndividualSuiteIcon />
                                         </Avatar>
                                     </ListItemAvatar>
                                     <ListItemText primary={character.status} secondary="Status" />
@@ -133,7 +136,7 @@ export default function characterPage() {
                                 <ListItem>
                                     <ListItemAvatar>
                                         <Avatar>
-                                            <BeachAccessIcon />
+                                            <HomeIcon />
                                         </Avatar>
                                     </ListItemAvatar>
                                     <ListItemText primary={character.origin?.name} secondary="Origin" />
@@ -143,7 +146,7 @@ export default function characterPage() {
                                 <ListItem>
                                     <ListItemAvatar>
                                         <Avatar>
-                                            <BeachAccessIcon />
+                                            <PlaceIcon />
                                         </Avatar>
                                     </ListItemAvatar>
                                     <ListItemText primary={character.location?.name} secondary="Last known location" />
@@ -155,7 +158,7 @@ export default function characterPage() {
                                 <ListItem>
                                     <ListItemAvatar>
                                         <Avatar>
-                                            <BeachAccessIcon />
+                                            <TvIcon />
                                         </Avatar>
                                     </ListItemAvatar>
                                     <ListItemText primary={`${episode?.name}-${episode?.episode}`} secondary="First seen in" />
