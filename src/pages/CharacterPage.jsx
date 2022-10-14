@@ -4,6 +4,16 @@ import CircleIcon from '@mui/icons-material/Circle';
 
 import '../App.css'
 
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import ImageIcon from '@mui/icons-material/Image';
+import WorkIcon from '@mui/icons-material/Work';
+import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 const status = {
     Alive: 'green',
     Dead: 'red',
@@ -38,11 +48,12 @@ export default function characterPage() {
     }
 
     return (
-        <div className='container bg-dark text-white fadein' style={{
+        <div className='container fadein' style={{
+            color: 'white',
         }}>
 
             <div className="row mt-5">
-                <div className="col-4">
+                <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                     <img
                         src={character.image}
                         alt={character.name}
@@ -65,16 +76,96 @@ export default function characterPage() {
                     } />
                 </div>
 
-                <div className="col-8">
-                    <ul className="list-group list-group">
-                        <li className="list-group-item bg-dark text-white border border-light"> <b>Gender:</b> {character.gender} </li>
-                        <li className="list-group-item bg-dark text-white border border-light"> <b>Species:</b> {character.species} </li>
-                        <li className="list-group-item bg-dark text-white border border-light"> <b>Status:</b> {character.status} </li>
-                        {character.type !== '' && <li className="list-group-item bg-dark text-white border border-light"> <b>Type:</b> {character.type} </li>}
-                        <li className="list-group-item bg-dark text-white border border-light"> <b>Origin:</b> {character.origin?.name} </li>
-                        <li className="list-group-item bg-dark text-white border border-light"> <b>Last known location:</b> {character.location?.name} </li>
-                        <li className="list-group-item bg-dark text-white border border-light"> <b>First seen in:</b> {episode?.name} - {episode?.episode} </li>
-                    </ul>
+                <div className="col-xl-8 col-lg-8 col-md-6 col-sm-12">
+                    {/* <Box sx={{ flexGrow: 1 }}>
+                        <Grid container spacing={2}> */}
+                    <List sx={{ width: '100%', maxWidth: 360, }}>
+                        <div className='row'>
+                            <div className='col-xl-6 col-lg-6 col-md-6 col-sm-12'>
+                                <ListItem>
+                                    <ListItemAvatar>
+                                        <Avatar>
+                                            <ImageIcon />
+                                        </Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText primary={character.gender} secondary="Gender" />
+                                </ListItem>
+                            </div>
+
+                            <div className='col-xl-6 col-lg-6 col-md-6 col-sm-12'>
+                                <ListItem>
+                                    <ListItemAvatar>
+                                        <Avatar>
+                                            <WorkIcon />
+                                        </Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText primary={character.species} secondary="Species" />
+                                </ListItem>
+                            </div>
+                        </div>
+
+                        <div className='row'>
+
+                            <div className='col-xl-6 col-lg-6 col-md-6 col-sm-12'>
+                                <ListItem>
+                                    <ListItemAvatar>
+                                        <Avatar>
+                                            <BeachAccessIcon />
+                                        </Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText primary={character.status} secondary="Status" />
+                                </ListItem>
+                            </div>
+
+                            <div className='col-xl-6 col-lg-6 col-md-6 col-sm-12'>
+                                <ListItem>
+                                    <ListItemAvatar>
+                                        <Avatar>
+                                            <BeachAccessIcon />
+                                        </Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText primary={character.type || 'unknown'} secondary="Type" />
+                                </ListItem>
+                            </div>
+                        </div>
+                        <div className='row'>
+                            <div className='col-xl-6 col-lg-6 col-md-6 col-sm-12'>
+                                <ListItem>
+                                    <ListItemAvatar>
+                                        <Avatar>
+                                            <BeachAccessIcon />
+                                        </Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText primary={character.origin?.name} secondary="Origin" />
+                                </ListItem>
+                            </div>
+                            <div className='col-xl-6 col-lg-6 col-md-6 col-sm-12'>
+                                <ListItem>
+                                    <ListItemAvatar>
+                                        <Avatar>
+                                            <BeachAccessIcon />
+                                        </Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText primary={character.location?.name} secondary="Last known location" />
+                                </ListItem>
+                            </div>
+                        </div>
+                        <div className='row'>
+                            <div className='col-12'>
+                                <ListItem>
+                                    <ListItemAvatar>
+                                        <Avatar>
+                                            <BeachAccessIcon />
+                                        </Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText primary={`${episode?.name}-${episode?.episode}`} secondary="First seen in" />
+                                </ListItem>
+                            </div>
+                        </div>
+                    </List>
+                    {/* </Grid>
+                    </Box> */}
+
                     <button
                         className="btn btn-outline-primary mt-3"
                         onClick={onNavigateBack}
@@ -83,6 +174,6 @@ export default function characterPage() {
                     </button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

@@ -4,7 +4,8 @@ import Character from "./Character";
 import queryString from 'query-string'
 import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
-
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 function Paginator({ page, setPage }) {
   return (
@@ -17,15 +18,19 @@ function Paginator({ page, setPage }) {
           onClick={() => {
             setPage(page - 1)
           }}>
-          Page {page - 1}
+          {/* Page {page - 1} */}
+          <NavigateBeforeIcon style={{ fontSize: 'medium' }} />
+          {/* Previous */}
         </button>
       }
-      <p>Current: {page}</p>
+      <p>Current Page: {page}</p>
       <button className='btn btn-primary btn-sm'
         onClick={() => {
           setPage(page + 1)
         }}>
-        Page {page + 1}
+        {/* Next {page + 1} */}
+        {/* Next */}
+        <NavigateNextIcon style={{ fontSize: 'medium' }} />
       </button>
     </div>
   )
@@ -66,8 +71,8 @@ export default function CharacterList() {
 
   return (
     <div className='container'>
-      <h1 className='text-center py-4 display-1 slidein'>Rick and Morty</h1>
-      <Paginator page={page} setPage={setPage} />
+      {/* <h1 className='text-center py-4 display-1 slidein'>Rick and Morty App</h1> */}
+      <Paginator page={page} setPage={setPage} style={{ padding: 5 }} />
       {
         loading
           ? <h1>Loading ...</h1>
@@ -75,7 +80,8 @@ export default function CharacterList() {
           <div className='row'>
             {characters.map(character => {
               return (
-                <div className='col-4 ' key={character.id}>
+                // <div className='col-3 ' key={character.id}>
+                <div className='col-xl-3 col-lg-4 col-md-6 col-sm-12' key={character.id}>
                   <Character character={character} />
                 </div>
               )

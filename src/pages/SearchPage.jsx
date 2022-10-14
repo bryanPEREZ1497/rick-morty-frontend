@@ -48,9 +48,9 @@ export default function SearchPage() {
     const showError = (q.length > 0) && characters.length === 0;
 
     return (
-        <div className='container bg-dark text-white'>
+        <div className='container text-white'>
             <div className='row py-4'>
-                <div className="col-3">
+                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                     <h4>Searching</h4>
                     <hr />
                     <form onSubmit={submitHandler}>
@@ -78,7 +78,7 @@ export default function SearchPage() {
                         </div>
                     </form>
                 </div>
-                <div className='col-9'>
+                <div className='col-xl-9 col-lg-8 col-md-6 col-sm-12'>
                     <h4 >Results</h4>
                     <hr />
                     <div

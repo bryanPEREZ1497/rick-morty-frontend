@@ -10,7 +10,7 @@ export default function SearchResults({ characters }) {
                     characters &&
                     characters.map(character => {
                         return (
-                            <div className='col-6' key={character.id}>
+                            <div className='col-xl-3 col-lg-4 col-md-6 col-sm-12' key={character.id}>
                                 <Character character={character} />
                             </div>
                         )

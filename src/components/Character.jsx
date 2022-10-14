@@ -19,36 +19,19 @@ const status = {
 }
 
 export default function Character({ character }) {
-    // console.log(character)
     return (
-        // <div className='text-center p-5 fadein'>
-        //     <div className='title' onClick={(e) => {
-        //         navigator.clipboard.writeText(character.name)
-        //     }}>
-        //         <h2>{character.name}</h2>
-        //     </div>
-
-        //     <img className='img-fluid borderradius' src={character.image}
-        //         alt={character.name} />
-
-        //     <Link to={`/character/${character.id}`}>
-        //         More...
-        //     </Link>
-
-        // </div>
-        <Card className='fadein' sx={{ maxWidth: 345, margin: 4 }} >
+        <Card className='fadein hover' sx={{ maxWidth: 345, margin: 4 }} >
             <Link to={`/character/${character.id}`} style={{ textDecoration: 'none' }}>
                 <CardActionArea >
                     <CardMedia
                         component="img"
-                        height="200"
                         image={character.image}
                         alt={character.name}
                     />
                     <CardContent sx={{
-                        backgroundColor: "#000000",
+                        backgroundColor: "#0062cc",
                     }}>
-                        <Typography gutterBottom variant="h5" component="div" color="white"
+                        <Typography gutterBottom variant="h7" component="div" color="white"
                             onClick={(e) => {
                                 navigator.clipboard.writeText(character.name)
                             }}>
@@ -59,9 +42,9 @@ export default function Character({ character }) {
                                 }
                             } />
                         </Typography>
-                        <Typography variant="body2" color="white">
+                        {/* <Typography variant="body2" color="white">
                             {character.species}
-                        </Typography>
+                        </Typography> */}
                     </CardContent>
                 </CardActionArea>
             </Link>
