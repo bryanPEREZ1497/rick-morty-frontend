@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import Character from "./Character";
 import queryString from 'query-string'
 import { useLocation, useNavigate } from 'react-router-dom';
-import Button from '@mui/material/Button';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
@@ -20,9 +19,7 @@ function Paginator({ page, setPage }) {
           onClick={() => {
             setPage(page - 1)
           }}>
-          {/* Page {page - 1} */}
           <NavigateBeforeIcon style={{ fontSize: 'medium' }} />
-          {/* Previous */}
         </button>
       }
       <p>Current Page: {page}</p>
@@ -30,17 +27,25 @@ function Paginator({ page, setPage }) {
         onClick={() => {
           setPage(page + 1)
         }}>
-        {/* Next {page + 1} */}
-        {/* Next */}
         <NavigateNextIcon style={{ fontSize: 'medium' }} />
       </button>
     </div>
   )
 }
 
-function BasicPagination({ count, onChange, page, setPage }) {
+function BasicPagination({ count, page, setPage }) {
+  function handlePageChange(e, p) {
+    console.log(p);
+    setPage(p);
+  }
+
   return (
-    <Pagination count={count} color="primary" onChange={onChange} />
+    <Pagination
+      count={count}
+      color="primary"
+      onChange={handlePageChange}
+      page={page}
+      showFirstButton showLastButton />
   );
 }
 
@@ -73,21 +78,15 @@ export default function CharacterList() {
   async function fetchData(query) {
     let response = await fetch('https://rickandmortyapi.com/api/character/?page=' + query);
     response = await response.json();
-    // console.log('aca', response);
     setLoading(false);
     setCharacters(response.results);
   }
 
-  function handlePageChange(e, p) {
-    console.log(p);
-    setPage(p);
-  }
-
   return (
     <div className='container'>
-      {/* <h1 className='text-center py-4 display-1 slidein'>Rick and Morty App</h1> */}
-      <Paginator page={page} setPage={setPage} style={{ padding: 5 }} />
-      {/* <BasicPagination count={42} onChange={handlePageChange}/> */}
+      <div className='d-flex justify-content-center my-4'>
+        <BasicPagination style={{ marginX: 'auto' }} count={42} page={page} setPage={setPage} />
+      </div>
       {
         loading
           ? <h1>Loading ...</h1>
@@ -95,7 +94,6 @@ export default function CharacterList() {
           <div className='row'>
             {characters.map(character => {
               return (
-                // <div className='col-3 ' key={character.id}>
                 <div className='col-xl-3 col-lg-4 col-md-6 col-sm-12' key={character.id}>
                   <Character character={character} />
                 </div>
@@ -103,7 +101,9 @@ export default function CharacterList() {
             })}
           </div>
       }
-      <Paginator page={page} setPage={setPage} />
+      <div className='d-flex justify-content-center my-4'>
+        <BasicPagination style={{ marginX: 'auto' }} count={42} page={page} setPage={setPage} />
+      </div>
     </div>
   )
 }
