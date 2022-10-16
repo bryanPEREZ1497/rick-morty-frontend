@@ -8,32 +8,32 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 import Pagination from '@mui/material/Pagination';
 
-function Paginator({ page, setPage }) {
-  return (
-    <div
-      className='navbar navbar-expand-lg navbar-light d-flex justify-content-between align-items-center'>
-      {
-        page - 1 > 0
-        &&
-        <button className='btn btn-primary btn-sm'
-          onClick={() => {
-            setPage(page - 1)
-          }}>
-          <NavigateBeforeIcon style={{ fontSize: 'medium' }} />
-        </button>
-      }
-      <p>Current Page: {page}</p>
-      <button className='btn btn-primary btn-sm'
-        onClick={() => {
-          setPage(page + 1)
-        }}>
-        <NavigateNextIcon style={{ fontSize: 'medium' }} />
-      </button>
-    </div>
-  )
-}
+// function Paginator({ page, setPage }) {
+//   return (
+//     <div
+//       className='navbar navbar-expand-lg navbar-light d-flex justify-content-between align-items-center'>
+//       {
+//         page - 1 > 0
+//         &&
+//         <button className='btn btn-primary btn-sm'
+//           onClick={() => {
+//             setPage(page - 1)
+//           }}>
+//           <NavigateBeforeIcon style={{ fontSize: 'medium' }} />
+//         </button>
+//       }
+//       <p>Current Page: {page}</p>
+//       <button className='btn btn-primary btn-sm'
+//         onClick={() => {
+//           setPage(page + 1)
+//         }}>
+//         <NavigateNextIcon style={{ fontSize: 'medium' }} />
+//       </button>
+//     </div>
+//   )
+// }
 
-function BasicPagination({ count, page, setPage }) {
+function Paginator({ count, page, setPage }) {
   function handlePageChange(e, p) {
     setPage(p);
   }
@@ -44,8 +44,11 @@ function BasicPagination({ count, page, setPage }) {
       color="primary"
       onChange={handlePageChange}
       page={page}
-      showFirstButton showLastButton
-      size="small" />
+      size="small"
+      showFirstButton
+      showLastButton
+      sx={{ button: { color: '#ffffff' } }}
+    />
   );
 }
 
@@ -85,7 +88,7 @@ export default function CharacterList() {
   return (
     <div className='container'>
       <div className='d-flex justify-content-center my-4'>
-        <BasicPagination count={42} page={page} setPage={setPage} />
+        <Paginator count={42} page={page} setPage={setPage} />
       </div>
       {
         loading
@@ -102,7 +105,7 @@ export default function CharacterList() {
           </div>
       }
       <div className='d-flex justify-content-center my-4'>
-        <BasicPagination count={42} page={page} setPage={setPage} />
+        <Paginator count={42} page={page} setPage={setPage} />
       </div>
     </div>
   )
